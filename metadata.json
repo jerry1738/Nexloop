@@ -1,0 +1,6 @@
+{
+  "name": "Nexloop — Animated SVG Loading Screen",
+  "description": "Animated SVG loading screen and vector export studio for the Nexloop infinity mark and wordmark.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

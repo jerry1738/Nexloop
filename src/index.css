@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+@keyframes nl-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes nl-marquee-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.nl-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: nl-marquee 40s linear infinite;
+}
+
+.nl-marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: nl-marquee-reverse 42s linear infinite;
+}
+
+.nl-marquee-track:hover,
+.nl-marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .nl-marquee-track,
+  .nl-marquee-track-reverse {
+    animation: none !important;
+  }
+  .nl-animated-stroke {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+  .nl-animated-element {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
