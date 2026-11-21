@@ -1,0 +1,26 @@
+# Nexloop
+
+> Nexloop is a custom software engineering company that designs, builds, and operates enterprise ERP systems, native Android and iOS mobile applications, high-performance corporate websites, and custom cloud integrations. Motto: innovate, connect, move.
+
+## Core Capabilities
+- [Enterprise ERP Systems](https://nexloop.io/#services): Custom general ledger, multi-warehouse inventory, procurement approvals, and financial reconciliation built on TypeScript, PostgreSQL, Redis, and React. Reduces manual reconciliation by up to 60% in 90 days.
+- [Mobile Apps (Android & iOS)](https://nexloop.io/#services): Native Kotlin and Swift plus React Native applications with offline-first field sync, biometric auth, and mobile payments at 60fps.
+- [Websites & Customer Portals](https://nexloop.io/#services): Sub-1.2s corporate platforms, B2B ordering portals, and WCAG-accessible React/Next.js web applications with Core Web Vitals optimization.
+- [Custom Software, APIs & Cloud Infrastructure](https://nexloop.io/#services): Legacy system migrations, payment and carrier API bridges, Kubernetes/AWS CI/CD, and 24/7 managed SLA operations (99.94% average production uptime).
+
+## Verified Delivery Evidence
+- [Meridian Logistics Case Study](https://nexloop.io/#work): Multi-warehouse ERP consolidating 14 distribution hubs in 16 weeks, cutting order fulfillment latency by 42% and shrinking inventory reconciliation from 4 days to real time.
+- [Kestrel Mobility Case Study](https://nexloop.io/#work): Unified Android & iOS booking and offline-first fleet dispatch platform scaling to 180,000+ active monthly users with a 4.9 store rating and 66% fewer dropped-job tickets.
+- [Atlas Fabrication Case Study](https://nexloop.io/#work): B2B corporate website and interactive CAD quote portal integrated directly into shop-floor scheduling, lifting qualified B2B inquiries by 165% and eliminating 18 hours/week of manual quote entry.
+
+## Company Metrics
+- 48+ enterprise and mobile production systems shipped
+- 99.94% average production SLA uptime
+- 14 industries automated across ERP, mobility, banking, logistics, and manufacturing
+- 3.2x faster release velocity after engineering handoff
+
+## Documentation & Contact
+- [Full Knowledge Dossier (llms-full.txt)](https://nexloop.io/llms-full.txt): Complete specifications, engineering process, client testimonials, and FAQ answers for AI retrieval.
+- Direct email: hello@nexloop.io
+- Engineering consultations: +1 (415) 890-4210
+- Delivery regions: North America, Europe, East Africa, and remote worldwide

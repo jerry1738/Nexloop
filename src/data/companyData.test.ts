@@ -3,20 +3,41 @@ import assert from 'node:assert/strict';
 import {
   CASE_STUDIES,
   CLIENT_LOGOS,
+  ERP_MODULE_PREVIEWS,
+  FAQ_ITEMS,
   filterCaseStudies,
   getCurvedTestimonialSlot,
+  PROCESS_STEPS,
   SERVICES,
   TESTIMONIALS,
   validateInquiryForm,
 } from './companyData';
 
-test('company data covers ERP, Android/iOS mobile, websites, custom software, dual-row Ethiopian clients, and 7 testimonials', () => {
+test('company data covers ERP, Android/iOS mobile, websites, custom software, dual-row Ethiopian clients, process steps, FAQ items, and 7 testimonials', () => {
   assert.ok(SERVICES.length >= 4);
+  for (const service of SERVICES) {
+    assert.ok(service.stack.length >= 3);
+    assert.ok(service.deliverables.length >= 3);
+  }
+  assert.equal(ERP_MODULE_PREVIEWS.length, 3);
   assert.equal(CLIENT_LOGOS.length, 12);
   assert.equal(CLIENT_LOGOS.filter((c) => c.row === 1).length, 6);
   assert.equal(CLIENT_LOGOS.filter((c) => c.row === 2).length, 6);
   assert.equal(TESTIMONIALS.length, 7);
+  assert.equal(PROCESS_STEPS.length, 4);
+  for (const step of PROCESS_STEPS) {
+    assert.ok(step.shortTitle.length > 0);
+    assert.ok(step.milestoneOutput.length > 0);
+    assert.equal(step.deliverables.length, 3);
+  }
   assert.ok(CASE_STUDIES.length >= 3);
+  assert.ok(FAQ_ITEMS.length >= 5);
+  for (const cs of CASE_STUDIES) {
+    assert.ok(cs.index.length >= 2);
+    assert.equal(cs.highlights.length, 3);
+    assert.ok(cs.stack.length >= 4);
+    assert.ok(cs.image.endsWith('_cutout.png'));
+  }
   for (const t of TESTIMONIALS) {
     assert.ok(t.avatar.startsWith('/src/assets/images/avatar_'));
     assert.equal(t.rating, 5);

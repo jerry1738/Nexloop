@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CaseStudiesSection } from './components/CaseStudiesSection';
 import { ClientsSection } from './components/ClientsSection';
 import { ContactSection } from './components/ContactSection';
+import { FaqSection } from './components/FaqSection';
 import { HeroSection } from './components/HeroSection';
 import { LoadingScreenOverlay } from './components/LoadingScreenOverlay';
 import { ProcessSection } from './components/ProcessSection';
@@ -9,7 +10,7 @@ import { ServicesSection } from './components/ServicesSection';
 import { SiteFooter } from './components/SiteFooter';
 import { SiteHeader } from './components/SiteHeader';
 import { TestimonialsSection } from './components/TestimonialsSection';
-import { soundEngine } from './utils/soundEngine';
+import { syncDocumentSeo } from './utils/seoMeta';
 
 export default function App() {
   const autostart = useMemo(() => {
@@ -18,7 +19,6 @@ export default function App() {
   }, []);
 
   const [showSplash, setShowSplash] = useState(!autostart);
-  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   const [preselectedService, setPreselectedService] = useState<string>('');
 
   useEffect(() => {
@@ -26,36 +26,12 @@ export default function App() {
   }, [showSplash]);
 
   useEffect(() => {
-    soundEngine.setEnabled(soundEnabled);
-  }, [soundEnabled]);
-
-  useEffect(() => {
-    if (!soundEnabled) return;
-    const handleUnlock = () => {
-      void soundEngine.unlock();
-    };
-    window.addEventListener('pointerdown', handleUnlock, { once: true });
-    window.addEventListener('keydown', handleUnlock, { once: true });
-    return () => {
-      window.removeEventListener('pointerdown', handleUnlock);
-      window.removeEventListener('keydown', handleUnlock);
-    };
-  }, [soundEnabled]);
+    syncDocumentSeo();
+  }, []);
 
   const handleSplashComplete = useCallback(() => {
     setShowSplash(false);
   }, []);
-
-  const toggleSound = () => {
-    setSoundEnabled((prev) => {
-      const next = !prev;
-      soundEngine.setEnabled(next);
-      if (next) {
-        void soundEngine.unlock();
-      }
-      return next;
-    });
-  };
 
   const scrollToContact = useCallback((serviceTitle?: string) => {
     if (serviceTitle) {
@@ -67,14 +43,8 @@ export default function App() {
 
   const handleReplaySplash = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (soundEnabled) {
-      void soundEngine.unlock().then(() => {
-        setShowSplash(true);
-      });
-      return;
-    }
     setShowSplash(true);
-  }, [soundEnabled]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
@@ -82,8 +52,6 @@ export default function App() {
         visible={showSplash}
         speed={1}
         surface="light"
-        soundEnabled={soundEnabled}
-        onToggleSound={toggleSound}
         onComplete={handleSplashComplete}
       />
 
@@ -96,6 +64,7 @@ export default function App() {
         <CaseStudiesSection onRequestSimilar={(service) => scrollToContact(service)} />
         <ProcessSection />
         <TestimonialsSection />
+        <FaqSection />
         <ContactSection preselectedService={preselectedService} />
       </main>
 

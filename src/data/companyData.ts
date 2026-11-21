@@ -28,12 +28,26 @@ export interface ServiceOffering {
   category: Exclude<CaseStudyCategory, 'all'>;
   summary: string;
   deliverables: string[];
+  stack: string[];
   outcome: string;
   span: 'wide' | 'narrow';
 }
 
+export interface ErpModulePreview {
+  id: 'ledger' | 'inventory' | 'procurement';
+  label: string;
+  caption: string;
+  syncTarget: string;
+}
+
+export interface CaseStudyHighlight {
+  label: string;
+  value: string;
+}
+
 export interface CaseStudy {
   id: string;
+  index: string;
   client: string;
   category: Exclude<CaseStudyCategory, 'all'>;
   categoryLabel: string;
@@ -43,6 +57,7 @@ export interface CaseStudy {
   summary: string;
   challenge: string;
   solution: string;
+  highlights: CaseStudyHighlight[];
   stack: string[];
   image: string;
   imageAlt: string;
@@ -51,8 +66,11 @@ export interface CaseStudy {
 export interface ProcessStep {
   index: string;
   title: string;
+  shortTitle: string;
   timeframe: string;
+  milestoneOutput: string;
   detail: string;
+  deliverables: string[];
 }
 
 export interface TestimonialItem {
@@ -88,6 +106,13 @@ export interface InquiryValidationErrors {
   name?: string;
   email?: string;
   brief?: string;
+}
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+  category: string;
 }
 
 export const HERO_IMAGE = {
@@ -193,6 +218,27 @@ export const CLIENT_LOGOS: ClientLogo[] = [
   },
 ];
 
+export const ERP_MODULE_PREVIEWS: ErpModulePreview[] = [
+  {
+    id: 'ledger',
+    label: 'Ledger',
+    caption: 'Automated multi-currency reconciliation & tax compliance',
+    syncTarget: 'General Ledger · Invoicing',
+  },
+  {
+    id: 'inventory',
+    label: 'Inventory',
+    caption: 'Real-time multi-warehouse stock levels & barcode dispatch',
+    syncTarget: 'Warehouses · BOM Sync',
+  },
+  {
+    id: 'procurement',
+    label: 'Procurement',
+    caption: 'Role-based PO approvals, vendor bids & audit trails',
+    syncTarget: 'Approvals · Vendor APIs',
+  },
+];
+
 export const SERVICES: ServiceOffering[] = [
   {
     id: 'erp',
@@ -206,6 +252,7 @@ export const SERVICES: ServiceOffering[] = [
       'Multi-warehouse stock, BOM & procurement',
       'Role-based approvals & audit logs',
     ],
+    stack: ['TypeScript', 'PostgreSQL', 'Redis', 'React'],
     outcome: 'Cut manual reconciliation by up to 60% in 90 days',
     span: 'wide',
   },
@@ -221,7 +268,8 @@ export const SERVICES: ServiceOffering[] = [
       'App Store & Google Play release pipelines',
       'Biometric auth, push & mobile payments',
     ],
-    outcome: 'Built for sub-1s launch times & zero-drop offline sync',
+    stack: ['Kotlin', 'Swift', 'React Native', 'SQLite Sync'],
+    outcome: 'Sub-1s launch & zero-drop offline sync',
     span: 'narrow',
   },
   {
@@ -236,7 +284,8 @@ export const SERVICES: ServiceOffering[] = [
       'B2B order & client account portals',
       'Core Web Vitals & accessibility compliance',
     ],
-    outcome: 'Fast page loads under 1.2s across mobile & desktop',
+    stack: ['React', 'Next.js', 'Tailwind CSS', 'Edge CDN'],
+    outcome: 'Sub-1.2s loads across mobile & desktop',
     span: 'narrow',
   },
   {
@@ -251,7 +300,8 @@ export const SERVICES: ServiceOffering[] = [
       'Payment, ERP, CRM & logistics API bridges',
       'CI/CD automation, cloud security & 24/7 SLA',
     ],
-    outcome: 'Zero-downtime deployments backed by dedicated engineering SLAs',
+    stack: ['Node.js', 'Docker', 'Kubernetes', 'AWS'],
+    outcome: 'Zero-downtime releases & dedicated SLA',
     span: 'wide',
   },
 ];
@@ -259,6 +309,7 @@ export const SERVICES: ServiceOffering[] = [
 export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'meridian-erp',
+    index: '01',
     client: 'Meridian Logistics',
     category: 'erp',
     categoryLabel: 'Enterprise ERP',
@@ -271,12 +322,18 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Inventory discrepancies across regional depots delayed invoicing by up to 4 days and caused frequent stockouts on high-turn SKUs.',
     solution:
       'Engineered a custom cloud ERP with barcode dispatch scanning, automated purchase-order triggers, and real-time general ledger sync.',
+    highlights: [
+      { label: 'Reconciliation window', value: '4 days to real-time' },
+      { label: 'Network footprint', value: '14 regional hubs unified' },
+      { label: 'Delivery cadence', value: '16 weeks to cutover' },
+    ],
     stack: ['TypeScript', 'PostgreSQL', 'Node.js', 'React', 'Redis'],
-    image: '/src/assets/images/work_erp_platform_1795081178354.jpg',
-    imageAlt: 'Desktop monitor and tablet displaying the Meridian Logistics enterprise ERP operations dashboard',
+    image: '/src/assets/images/work_erp_cutout.png',
+    imageAlt: 'Isolated 3D studio display and tablet showcasing Meridian Logistics custom enterprise ERP financial ledger and inventory dashboard',
   },
   {
     id: 'kestrel-mobile',
+    index: '02',
     client: 'Kestrel Mobility',
     category: 'mobile',
     categoryLabel: 'Android & iOS',
@@ -289,12 +346,18 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Drivers operating in low-connectivity industrial zones lost job state mid-route, leading to missed pickups and manual support calls.',
     solution:
       'Built an optimistic offline queue with conflict-free sync on reconnect, Apple/Google Pay checkout, and native push dispatch alerts.',
+    highlights: [
+      { label: 'Dispatch support load', value: '-66% dropped job tickets' },
+      { label: 'Store satisfaction', value: '4.9 average rating' },
+      { label: 'Delivery cadence', value: '12 weeks dual-platform' },
+    ],
     stack: ['Swift', 'Kotlin', 'React Native', 'WebSockets', 'PostgreSQL'],
-    image: '/src/assets/images/work_mobile_apps_1795081178401.jpg',
-    imageAlt: 'Android and iOS flagship smartphones showcasing the Kestrel Mobility native mobile applications',
+    image: '/src/assets/images/work_mobile_cutout.png',
+    imageAlt: 'Isolated floating iOS and Android flagship smartphones running the Kestrel Mobility dispatch map and booking application',
   },
   {
     id: 'atlas-custom',
+    index: '03',
     client: 'Atlas Fabrication',
     category: 'web',
     categoryLabel: 'Web & Custom Software',
@@ -307,9 +370,52 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Sales engineers spent 18 hours a week manually re-keying website quote requests into production costing sheets.',
     solution:
       'Designed a high-speed marketing site paired with a custom quote engine and automated CRM + shop-floor API handoff.',
+    highlights: [
+      { label: 'Manual quote entry', value: '18 hrs/wk eliminated' },
+      { label: 'Pipeline conversion', value: '+165% qualified B2B leads' },
+      { label: 'Delivery cadence', value: '10 weeks launch' },
+    ],
     stack: ['React', 'Tailwind CSS', 'REST APIs', 'Cloudflare', 'AWS'],
-    image: '/src/assets/images/work_custom_engineering_1795081178669.jpg',
-    imageAlt: 'Nexloop engineering team reviewing custom system architecture diagrams inside a glass studio room',
+    image: '/src/assets/images/work_web_cutout.png',
+    imageAlt: 'Isolated floating laptop and modular browser card showing the Atlas Fabrication B2B quote portal and API pipeline dashboard',
+  },
+];
+
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    id: 'delivery-timelines',
+    category: 'Delivery & Timelines',
+    question: 'How long does it take Nexloop to build and launch a custom ERP or software system?',
+    answer:
+      'Most production MVP launches take 10 to 16 weeks depending on complexity. Corporate web platforms and B2B quote portals typically ship in 10 weeks, dual-platform Android and iOS suites in 12 weeks, and multi-warehouse ERP consolidations in 16 weeks with weekly live staging demos.',
+  },
+  {
+    id: 'code-ownership',
+    category: 'IP & Ownership',
+    question: 'Do we own 100% of the source code and intellectual property after launch?',
+    answer:
+      'Yes. Clients receive full ownership of all custom application source code, database schemas, architectural documentation, and cloud infrastructure-as-code repositories upon milestone handoff—with zero proprietary runtime lock-in or per-seat licensing fees.',
+  },
+  {
+    id: 'mobile-architecture',
+    category: 'Mobile Engineering',
+    question: 'Should we choose native Kotlin and Swift or React Native for our mobile app?',
+    answer:
+      'We recommend native Kotlin and Swift when apps require low-level hardware access, continuous background GPS telemetry, or complex offline storage, and React Native when shared Android and iOS velocity across business workflows is the priority—both shipped through automated store release pipelines.',
+  },
+  {
+    id: 'legacy-integration',
+    category: 'APIs & Integrations',
+    question: 'Can Nexloop integrate custom software with our existing ERP, banking, or payment APIs?',
+    answer:
+      'Yes. Every engagement can connect legacy accounting cores, regional banking rails, mobile money gateways, warehouse barcode hardware, and CRM platforms through idempotent REST, GraphQL, or webhook pipelines without interrupting daily operations.',
+  },
+  {
+    id: 'post-launch-sla',
+    category: 'Operations & SLA',
+    question: 'What happens after launch—does Nexloop provide ongoing maintenance and SLAs?',
+    answer:
+      'Teams can either take full internal handoff supported by automated test suites and runbooks, or retain Nexloop under a 24/7 managed SLA covering cloud scaling, security patching, continuous feature sprints, and 99.94% average production uptime.',
   },
 ];
 
@@ -317,30 +423,58 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     index: '01',
     title: 'Discovery & Architecture',
+    shortTitle: 'Discovery',
     timeframe: 'Week 1 – 2',
+    milestoneOutput: 'Signed Architecture Blueprint',
     detail:
       'We shadow your operations, map bottlenecks across spreadsheets and legacy APIs, and deliver a fixed architectural blueprint.',
+    deliverables: [
+      'Entity-relationship & domain data schema',
+      'Legacy API & ERP integration map',
+      'Fixed milestone scope, timeline & risk register',
+    ],
   },
   {
     index: '02',
     title: 'Product Design & Prototype',
+    shortTitle: 'Design & UX',
     timeframe: 'Week 3 – 4',
+    milestoneOutput: 'Validated Interactive Prototype',
     detail:
       'Interactive Figma flows and design systems validated with your actual operators and end users before production code begins.',
+    deliverables: [
+      'Clickable desktop, iOS & Android user flows',
+      'Operator-tested component & token library',
+      'Role-based permission & offline UX states',
+    ],
   },
   {
     index: '03',
     title: 'Agile Engineering & QA',
+    shortTitle: 'Build & QA',
     timeframe: 'Weekly Sprints',
+    milestoneOutput: 'Weekly Live Staging Builds',
     detail:
       'Automated test suites, weekly staging demos, security reviews, and clean TypeScript, mobile, and ERP deliverables you can inspect live.',
+    deliverables: [
+      'Continuous TypeScript, ERP & mobile builds',
+      'Automated integration, load & security checks',
+      'Weekly live sprint demos with direct engineers',
+    ],
   },
   {
     index: '04',
     title: 'Rollout & Managed SLA',
+    shortTitle: 'Launch & SLA',
     timeframe: 'Launch & Beyond',
+    milestoneOutput: 'Zero-Downtime Go-Live & 24/7 SLA',
     detail:
       'Zero-downtime data migration, team onboarding, app-store publishing, and ongoing 24/7 monitoring with dedicated engineers.',
+    deliverables: [
+      'Dry-run verified production data migration',
+      'App Store, Google Play & cloud rollout',
+      '24/7 observability, runbooks & SLA response',
+    ],
   },
 ];
 

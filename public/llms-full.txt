@@ -1,0 +1,78 @@
+# Nexloop — Complete Engineering & Delivery Dossier
+
+> Nexloop builds custom Enterprise Resource Planning (ERP) platforms, native Android and iOS mobile apps, B2B customer portals, corporate websites, and cloud API infrastructure. Tagline: innovate · connect · move.
+
+## Entity Summary
+- **Organization Name**: Nexloop Software
+- **Domain**: https://nexloop.io
+- **Primary Services**: Enterprise ERP Systems, Native Android & iOS Mobile Apps, Websites & B2B Customer Portals, Custom Software & Cloud Infrastructure
+- **Track Record**: 48+ production systems shipped across 14 industries with 99.94% average SLA uptime and 3.2x faster post-handoff release velocity
+- **Contact**: hello@nexloop.io | +1 (415) 890-4210 | North America · Europe · East Africa · Remote Worldwide
+
+## Service Specifications
+
+### 01. Enterprise ERP Systems
+- **Summary**: Tailored ERP unifying finance, multi-warehouse inventory, procurement approvals, and branch operations into one auditable source of truth.
+- **Deliverables**: General ledger, multi-currency reconciliation & tax automation; multi-warehouse stock, BOM sync & barcode dispatch; role-based PO approvals & audit trails.
+- **Core Stack**: TypeScript, PostgreSQL, Redis, React.
+- **Typical Impact**: Cuts manual financial and stock reconciliation by up to 60% within 90 days.
+
+### 02. Mobile Apps (Android & iOS)
+- **Summary**: Native Kotlin (Android) and Swift (iOS) applications alongside shared React Native architectures designed for offline field sync, biometric security, and 60fps responsiveness.
+- **Deliverables**: Offline-first field & driver apps; App Store & Google Play release pipelines; biometric authentication, push notifications & mobile payment integrations.
+- **Core Stack**: Kotlin, Swift, React Native, SQLite Sync.
+- **Typical Impact**: Sub-1-second cold start and zero-drop offline synchronization.
+
+### 03. Websites & Customer Portals
+- **Summary**: Conversion-engineered corporate websites, B2B ordering portals, and SaaS platforms built for Core Web Vitals, accessibility compliance, and search/AI discoverability.
+- **Deliverables**: Corporate brand sites & structured CMS workflows; B2B quote, order, and account portals; WCAG AA accessibility & technical SEO/GEO architecture.
+- **Core Stack**: React, Next.js, Tailwind CSS, Edge CDN.
+- **Typical Impact**: Sub-1.2-second page loads across mobile and desktop.
+
+### 04. Custom Software, APIs & Cloud Infrastructure
+- **Summary**: Bespoke operational software, legacy ERP/SAP migrations, payment and carrier API bridges, UI/UX design systems, and 24/7 DevOps monitoring.
+- **Deliverables**: Custom workflow engines & zero-downtime migrations; REST/GraphQL payment, CRM & logistics API bridges; Kubernetes/AWS CI/CD & 24/7 managed SLA.
+- **Core Stack**: Node.js, Docker, Kubernetes, AWS.
+
+## Case Studies & Quantitative Proof
+
+### 01. Meridian Logistics (Enterprise ERP — 16 Weeks)
+- **Outcome**: -42% order fulfillment latency; inventory reconciliation window compressed from 4 days to real time across 14 distribution hubs.
+- **Challenge**: Five disconnected regional spreadsheets and legacy billing tools delayed invoicing and caused stockouts on fast-moving SKUs.
+- **Solution**: Engineered a cloud ERP with barcode dispatch scanning, automated purchase-order triggers, and live general ledger synchronization.
+- **Stack**: TypeScript, PostgreSQL, Node.js, React, Redis.
+
+### 02. Kestrel Mobility (Android & iOS — 12 Weeks)
+- **Outcome**: 180,000+ active monthly users, 4.9 average app-store rating, and -66% dropped-dispatch support tickets.
+- **Challenge**: Field drivers in low-connectivity industrial corridors lost active job state mid-route.
+- **Solution**: Built an optimistic offline-first sync queue with conflict-free reconnection, Apple Pay / Google Pay checkout, and native push dispatch alerts.
+- **Stack**: Swift, Kotlin, React Native, WebSockets, PostgreSQL.
+
+### 03. Atlas Fabrication (Web & Custom Software — 10 Weeks)
+- **Outcome**: +165% qualified B2B inquiries and 18 hours/week of manual quote entry eliminated.
+- **Challenge**: Sales engineers re-keyed web quote requests into costing sheets manually.
+- **Solution**: Rebuilt the corporate web platform paired with an interactive CAD quote estimator wired directly into CRM and shop-floor scheduling APIs.
+- **Stack**: React, Tailwind CSS, REST APIs, Cloudflare, AWS.
+
+## Engineering Delivery Process
+1. **Discovery & Architecture (Weeks 1–2)**: Shadow existing workflows, audit legacy APIs and spreadsheets, and produce a fixed architectural blueprint.
+2. **Product Design & Prototype (Weeks 3–4)**: Interactive Figma flows validated with operators and end users before production coding.
+3. **Agile Engineering & QA (Weekly Sprints)**: Automated test suites, staging demos, security audits, and inspectable TypeScript, mobile, and ERP codebases.
+4. **Rollout & Managed SLA (Launch & Beyond)**: Zero-downtime data migration, team training, app-store publishing, and 24/7 monitoring.
+
+## Frequently Asked Questions (Direct Answers)
+
+### How long does it take Nexloop to build and launch a custom ERP or software system?
+Most production MVP launches take 10 to 16 weeks depending on scope. Web platforms and B2B quote portals typically ship in 10 weeks, dual-platform Android and iOS suites in 12 weeks, and multi-warehouse ERP consolidations in 16 weeks with weekly staging demos throughout delivery.
+
+### Do we own the full source code and intellectual property after launch?
+Yes. Clients receive 100% ownership of all custom source code, architectural documentation, database schemas, and cloud infrastructure-as-code repositories upon milestone completion, with zero vendor lock-in or proprietary runtime licensing fees.
+
+### Should we choose native Kotlin/Swift or React Native for our mobile application?
+Nexloop recommends native Kotlin and Swift when apps demand hardware-intensive Bluetooth/telemetry, background GPS tracking, or complex offline storage, and React Native when shared velocity across Android and iOS business workflows is the priority—both backed by automated store release pipelines.
+
+### Can Nexloop integrate new custom software with our existing ERP, banking, or payment APIs?
+Yes. Every engagement can bridge legacy accounting cores, regional banking rails, mobile money gateways, warehouse scanners, and CRM systems via idempotent REST, GraphQL, or webhook pipelines without disrupting daily operations.
+
+### What happens after launch—does Nexloop provide ongoing maintenance and SLAs?
+Yes. Teams can either take full internal handoff with training and automated CI/CD suites, or retain Nexloop for a 24/7 managed SLA covering security patches, cloud scaling, uptime monitoring (99.94% average), and continuous feature sprints.

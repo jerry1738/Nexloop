@@ -78,6 +78,11 @@ export function SiteFooter({ onReplaySplash }: SiteFooterProps) {
                   Testimonials
                 </a>
               </li>
+              <li>
+                <a href="#faq" className="hover:text-[#0D5683] transition-colors">
+                  FAQ
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -94,6 +99,11 @@ export function SiteFooter({ onReplaySplash }: SiteFooterProps) {
                 </a>
               </li>
               <li className="tabular-nums">+1 (415) 890-4210</li>
+              <li>
+                <a href="/llms.txt" className="hover:text-[#0D5683] transition-colors">
+                  llms.txt Reference
+                </a>
+              </li>
               <li>
                 <button
                   type="button"
