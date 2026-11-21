@@ -12,7 +12,11 @@ const NAV_LINKS = [
   { href: '#contact', id: 'contact', label: 'Contact' },
 ];
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+  entered?: boolean;
+}
+
+export function SiteHeader({ entered = true }: SiteHeaderProps) {
   const prefersReduced = useReducedMotion();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState<string>('services');
@@ -53,7 +57,18 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-30 pt-2.5 sm:pt-3 px-4 sm:px-6 pointer-events-none">
+    <motion.header
+      initial={prefersReduced ? false : { opacity: 0, y: -20 }}
+      animate={
+        prefersReduced
+          ? { opacity: 1, y: 0 }
+          : entered
+            ? { opacity: 1, y: 0 }
+            : { opacity: 0, y: -20 }
+      }
+      transition={{ duration: 0.62, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="sticky top-0 z-30 pt-2.5 sm:pt-3 px-4 sm:px-6 pointer-events-none"
+    >
       <div
         className={`pointer-events-auto relative max-w-[1200px] mx-auto rounded-2xl border transition-all duration-300 overflow-hidden ${
           scrolled
@@ -163,6 +178,6 @@ export function SiteHeader() {
           })}
         </nav>
       )}
-    </header>
+    </motion.header>
   );
 }

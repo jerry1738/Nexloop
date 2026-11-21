@@ -19,6 +19,7 @@ export default function App() {
   }, []);
 
   const [showSplash, setShowSplash] = useState(!autostart);
+  const [homeRevealed, setHomeRevealed] = useState(autostart);
   const [preselectedService, setPreselectedService] = useState<string>('');
 
   useEffect(() => {
@@ -29,7 +30,12 @@ export default function App() {
     syncDocumentSeo();
   }, []);
 
+  const handleRevealStart = useCallback(() => {
+    setHomeRevealed(true);
+  }, []);
+
   const handleSplashComplete = useCallback(() => {
+    setHomeRevealed(true);
     setShowSplash(false);
   }, []);
 
@@ -43,6 +49,7 @@ export default function App() {
 
   const handleReplaySplash = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setHomeRevealed(false);
     setShowSplash(true);
   }, []);
 
@@ -52,13 +59,17 @@ export default function App() {
         visible={showSplash}
         speed={1}
         surface="light"
+        onRevealStart={handleRevealStart}
         onComplete={handleSplashComplete}
       />
 
-      <SiteHeader />
+      <SiteHeader entered={homeRevealed} />
 
       <main className="flex-1">
-        <HeroSection onStartProject={() => scrollToContact()} />
+        <HeroSection
+          entered={homeRevealed}
+          onStartProject={() => scrollToContact()}
+        />
         <ClientsSection />
         <ServicesSection onSelectService={(service) => scrollToContact(service)} />
         <CaseStudiesSection onRequestSimilar={(service) => scrollToContact(service)} />
